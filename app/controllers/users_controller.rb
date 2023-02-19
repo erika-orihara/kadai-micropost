@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes]
   
   
   def index
@@ -28,6 +28,15 @@ class UsersController < ApplicationController
     end
   end
   
+  
+  #お気に入り機能
+  def likes
+    @user = User.find(params[:id])
+    @pagy, @likes = pagy(@user.likes)
+    counts(@user)
+  end 
+    
+
   def followings
     @user = User.find(params[:id])
     @pagy, @followings = pagy(@user.followings)

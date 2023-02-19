@@ -19,7 +19,8 @@ class MicropostsController < ApplicationController
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
   end
-
+  
+  
   private
 
   def micropost_params
